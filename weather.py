@@ -38,6 +38,12 @@ Instructions: {props.get('instruction', 'No specific instructions provided')}
 @mcp_server.tool()
 
 async def get_alerts(state: str) -> str:
+    """Get weather alerts for a US state.
+
+    Args:
+        state: Two-letter US state code (e.g. CA, NY)
+    """
+
     url = f"{NWS_API_BASE}/alerts/active/area={state}"
     data = await make_nws_request(url)
 
@@ -53,6 +59,13 @@ async def get_alerts(state: str) -> str:
 
 @mcp_server.tool()
 async def get_forecast(latitude: float, longitude: float) -> str:
+    """Get weather forecast for a location.
+
+    Args:
+        latitude: Latitude of the location
+        longitude: Longitude of the location
+    """
+
     # First get the forecast grid endpoint
     points_url = f"{NWS_API_BASE}/points/{latitude},{longitude}"
     points_data = await make_nws_request(points_url)
