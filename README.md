@@ -1,8 +1,8 @@
-### MCP playground
+## MCP playground
 
 as described in https://modelcontextprotocol.io/quickstart/server
 
-#### setupst
+### setupst
 providing `uv` is installed:
 
 ```
@@ -21,7 +21,26 @@ uv add "mcp[cli]" httpx
 touch weather.py
 ```
 
-#### run server
+### run server
 ```
 uv run weather.py
+```
+
+### configure with Claude Desktop
+1. open `%APPDATA%\Claude\claude_desktop_config.json`
+1. add configuration for this MCP server
+```
+{
+    "mcpServers": {
+        "weather": {
+            "command": "C:\\Users\\dafi\\.local\\bin\\uv",
+            "args": [
+                "--directory",
+                "C:\\Users\\dafi\\workspace\\mcp-playground",
+                "run",
+                "weather.py"
+            ]
+        }
+    }
+}
 ```
